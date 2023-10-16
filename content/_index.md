@@ -247,7 +247,7 @@ sections:
       phone: 888 888 88 88
       # appointment_url: 'https://calendly.com'
       address:
-        street: 756 W Peachtree St NW, Atlanta,  
+        street: 756 W Peachtree St NW  
         city: Atlanta
         region: GA
         postcode: '30308'
