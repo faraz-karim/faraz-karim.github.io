@@ -39,7 +39,7 @@ sections:
   - block: about.biography
     id: about
     content:
-      title: Biography
+      title: About me
       # Choose a user profile to display (a folder name within `content/authors/`)
       username: admin
   - block: features
@@ -176,24 +176,24 @@ sections:
       buttons:
         - name: All
           tag: '*'
-        - name: Deep Learning
-          tag: Deep Learning
+        - name: Security
+          tag: Security
         - name: Other
           tag: Demo
-    design:
-      # Choose how many columns the section has. Valid values: '1' or '2'.
-      columns: '1'
-      view: showcase
-      # For Showcase view, flip alternate rows?
-      flip_alt_rows: false
-  - block: markdown
-    content:
-      title: Gallery
-      subtitle: ''
-      text: |-
-        {{< gallery album="demo" >}}
-    design:
-      columns: '1'
+  #   design:
+  #     # Choose how many columns the section has. Valid values: '1' or '2'.
+  #     columns: '1'
+  #     view: showcase
+  #     # For Showcase view, flip alternate rows?
+  #     flip_alt_rows: false
+  # - block: markdown
+  #   content:
+  #     title: Gallery
+  #     subtitle: ''
+  #     text: |-
+  #       {{< gallery album="demo" >}}
+  #   design:
+  #     columns: '1'
   - block: collection
     id: featured
     content:
@@ -242,7 +242,7 @@ sections:
       text: |-
         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam mi diam, venenatis ut magna et, vehicula efficitur enim.
       # Contact (add or remove contact options as necessary)
-      email: test@example.org
+      email: mkarim40@gatech.edu
       phone: 888 888 88 88
       appointment_url: 'https://calendly.com'
       address:
