@@ -35,7 +35,7 @@ interests:
 education:
   courses:
     - course: PhD in Cyber Security
-      institution: Geirgia Institute of Technology
+      institution: Georgia Institute of Technology
       year: (In progress)
     - course: BSc in Computer Science 
       institution: Lahore University of Management Sciences
