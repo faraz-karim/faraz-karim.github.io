@@ -22,7 +22,7 @@ organizations:
     url: https://www.gatech.edu/
 
 # Short bio (displayed in user profile at end of posts)
-bio: My research interests include distributed robotics, mobile computing and programmable matter.
+bio: My research interests include cyber security of Cyber physical systems, embedded systems and TinyML
 
 # Interests to show in About widget
 interests:
@@ -80,5 +80,7 @@ email: ''
 highlight_name: true
 ---
 
-Alice Wu is a professor of artificial intelligence at the Stanford AI Lab. Her research interests include distributed robotics, mobile computing and programmable matter. She leads the Robotic Neurobiology group, which develops self-reconfiguring robots, systems of self-organizing robots, and mobile sensor networks.
+I am a researcher in the field of cyber physical physical system security and am currently persuing a Ph.D. at Georgia Tech's College of Computing specializing in cybersecurity. My research aims to protect a system from cyber attacks by leveraging physical aspects of cyber-physical systems and the power of software diversity. I'm dedicated to creating resilient real-time systems that not only defend against cyber-attacks but also adapt gracefully in the face of irregular or faulty behavior. My research interests include embedded systems, compilers and program analysis. I am working under Dr. Sukarno Mertoguno at the CSAFA lab of Security Research.
+
+
 {style="text-align: justify;"}
