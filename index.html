@@ -1,1126 +1,518 @@
-<!DOCTYPE html>
-<html lang="en" class="scroll-smooth">
+<!doctype html>
+<html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Muhammad Faraz Karim — Cybersecurity Researcher</title>
-  <meta name="description" content="Ph.D. Candidate in Cybersecurity at Georgia Tech. Research on cyber-physical systems security and AI/ML hardware acceleration." />
-
-  <!-- Fonts: Fraunces (display serif), Geist (body sans), JetBrains Mono (code/meta) -->
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght,SOFT@9..144,300..900,0..100&family=Geist:wght@300..700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
-
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light">
+  <meta name="theme-color" content="#f7f8f5">
+  <meta name="description" content="Muhammad Faraz Karim is a PhD candidate in Cybersecurity at Georgia Tech researching resilient cyber-physical systems, real-time computing, and hardware-aware AI acceleration.">
+  <title>Muhammad Faraz Karim — Cybersecurity Researcher | Georgia Tech</title>
+  <!-- Update these URLs if the site ever moves to another domain. -->
+  <link rel="canonical" href="https://faraz-karim.github.io/">
+  <meta property="og:type" content="profile">
+  <meta property="og:title" content="Muhammad Faraz Karim — Cybersecurity Researcher">
+  <meta property="og:description" content="Research in systems security, cyber-physical resilience, and efficient computing under real-world constraints.">
+  <meta property="og:url" content="https://faraz-karim.github.io/">
+  <meta property="og:image" content="https://faraz-karim.github.io/assets/images/social-preview.jpg">
+  <meta property="og:image:alt" content="Muhammad Faraz Karim — Georgia Tech cybersecurity researcher">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;450;500;600;700&family=Source+Serif+4:opsz,wght@8..60,400;8..60,500;8..60,600&display=swap" rel="stylesheet">
   <style>
-    /* ---------- TOKENS ---------- */
+    /* ---------------------------- Design system ---------------------------- */
     :root {
-      --bg: #0b0b0d;
-      --bg-2: #111114;
-      --bg-3: #16161a;
-      --line: #24242a;
-      --line-strong: #34343c;
-      --ink: #ece8df;
-      --ink-2: #b9b3a6;
-      --ink-3: #7a746a;
-      --ink-4: #4d4842;
-      --accent: #d4a572;          /* warm amber */
-      --accent-2: #e8c79a;
-      --accent-soft: rgba(212, 165, 114, 0.14);
-      --accent-line: rgba(212, 165, 114, 0.35);
-      --grid: rgba(255, 255, 255, 0.025);
-      --shadow: 0 1px 0 rgba(255,255,255,0.03) inset, 0 30px 60px -30px rgba(0,0,0,0.6);
-      --radius: 14px;
-      --radius-sm: 8px;
-      --container: 1180px;
+      color-scheme: light;
+      --paper: #f7f8f5;
+      --white: #fff;
+      --ink: #162b37;
+      --body: #405664;
+      --muted: #61727b;
+      --teal: #176675;
+      --teal-dark: #0f4b59;
+      --teal-soft: #e7f0f0;
+      --rule: #d4dfdf;
+      --night: #102936;
+      --cream: #f0f3ed;
+      --serif: 'Source Serif 4', Georgia, 'Times New Roman', serif;
+      --sans: 'IBM Plex Sans', system-ui, -apple-system, 'Segoe UI', sans-serif;
+      --container: 1110px;
+      --reading: 690px;
+      --shadow: 0 14px 38px rgba(21, 43, 55, .07);
     }
-
-    /* ---------- RESET / BASE ---------- */
     *, *::before, *::after { box-sizing: border-box; }
-    html, body { margin: 0; padding: 0; }
-    html { -webkit-text-size-adjust: 100%; }
-    body {
-      background: var(--bg);
-      color: var(--ink);
-      font-family: 'Geist', ui-sans-serif, system-ui, -apple-system, sans-serif;
-      font-weight: 400;
-      font-size: 16px;
-      line-height: 1.6;
-      letter-spacing: -0.005em;
-      font-feature-settings: "ss01", "cv11";
-      -webkit-font-smoothing: antialiased;
-      -moz-osx-font-smoothing: grayscale;
-      overflow-x: hidden;
-    }
-    ::selection { background: var(--accent); color: #1a1410; }
-    a { color: inherit; text-decoration: none; }
+    html { scroll-behavior: smooth; scroll-padding-top: 90px; }
+    body { margin: 0; font-family: var(--sans); font-size: 16px; line-height: 1.65; color: var(--ink); background: var(--paper); -webkit-font-smoothing: antialiased; }
+    body.nav-open { overflow: hidden; }
     img { max-width: 100%; display: block; }
+    a { color: var(--teal-dark); text-decoration-thickness: 1px; text-underline-offset: .19em; }
+    a:hover { color: #077a8e; }
+    a:focus-visible, button:focus-visible { outline: 3px solid #178b98; outline-offset: 4px; border-radius: 3px; }
+    button { font: inherit; }
+    ::selection { background: #cce5e4; color: var(--ink); }
+    .container { width: min(calc(100% - 64px), var(--container)); margin-inline: auto; }
+    .skip-link { position: absolute; z-index: 400; top: -100px; left: 18px; background: var(--white); padding: 12px 16px; border: 2px solid var(--teal); }
+    .skip-link:focus { top: 12px; }
+    .eyebrow { color: var(--teal); font-weight: 600; font-size: .75rem; letter-spacing: .13em; text-transform: uppercase; }
+    .kicker { color: var(--muted); font-weight: 500; font-size: .85rem; }
+    .muted { color: var(--muted); }
+    .prose { color: var(--body); max-width: var(--reading); }
+    .prose p { margin: 0 0 1.15rem; }
+    .prose p:last-child { margin-bottom: 0; }
+    .section { padding: 85px 0; border-top: 1px solid var(--rule); }
+    .section-title { font-family: var(--serif); font-size: clamp(2.15rem, 4vw, 3.12rem); font-weight: 500; letter-spacing: -.038em; line-height: 1.12; margin: 8px 0 0; }
+    .section-intro { max-width: 540px; color: var(--body); margin: 18px 0 0; font-size: 1.04rem; }
+    .section-top { display: flex; align-items: end; justify-content: space-between; gap: 25px; margin-bottom: 42px; }
+    .section-top .section-intro { margin: 0; max-width: 420px; }
+    .inline-arrow { display: inline-block; transition: transform .18s ease; margin-left: 3px; }
+    a:hover .inline-arrow { transform: translate(2px, -2px); }
+    .text-link { font-weight: 600; text-decoration-thickness: 1.2px; }
+    .pill-link { display: inline-flex; align-items: center; gap: 9px; border: 1px solid #aabfc0; padding: 11px 17px; border-radius: 5px; font-weight: 600; font-size: .88rem; text-decoration: none; transition: background .2s, border-color .2s; }
+    .pill-link:hover { background: var(--teal-soft); border-color: var(--teal); }
+    .pill-link.solid { color: #fff; background: var(--teal-dark); border-color: var(--teal-dark); }
+    .pill-link.solid:hover { background: #116578; }
 
-    /* Subtle background grid + warm vignette */
-    body::before {
-      content: "";
-      position: fixed; inset: 0;
-      background-image:
-        linear-gradient(var(--grid) 1px, transparent 1px),
-        linear-gradient(90deg, var(--grid) 1px, transparent 1px);
-      background-size: 60px 60px;
-      mask-image: radial-gradient(ellipse at 50% 30%, #000 30%, transparent 80%);
-      -webkit-mask-image: radial-gradient(ellipse at 50% 30%, #000 30%, transparent 80%);
-      pointer-events: none;
-      z-index: 0;
-    }
-    body::after {
-      content: "";
-      position: fixed; inset: 0;
-      background:
-        radial-gradient(60% 50% at 80% 0%, rgba(212,165,114,0.06), transparent 70%),
-        radial-gradient(50% 40% at 0% 100%, rgba(80, 120, 200, 0.04), transparent 70%);
-      pointer-events: none;
-      z-index: 0;
-    }
+    /* -------------------------------- Header ------------------------------- */
+    .site-header { position: sticky; z-index: 100; top: 0; background: rgba(247,248,245,.97); border-bottom: 1px solid var(--rule); }
+    .header-inner { width: min(calc(100% - 64px), var(--container)); margin-inline: auto; min-height: 74px; display: flex; align-items: center; justify-content: space-between; gap: 24px; }
+    .wordmark { color: var(--ink); font-weight: 700; font-size: 1.02rem; letter-spacing: -.035em; text-decoration: none; white-space: nowrap; }
+    .wordmark:hover { color: var(--teal-dark); }
+    .desktop-nav { display: flex; align-items: center; gap: clamp(14px,2.5vw,30px); }
+    .desktop-nav a { color: var(--body); text-decoration: none; font-size: .88rem; font-weight: 500; }
+    .desktop-nav a:hover, .desktop-nav a[aria-current="location"] { color: var(--teal-dark); }
+    .desktop-nav .cv-nav { color: var(--teal-dark); font-weight: 700; }
+    .nav-toggle { display: none; align-items: center; justify-content: center; width: 43px; height: 43px; border: 1px solid var(--rule); background: var(--white); color: var(--ink); border-radius: 4px; cursor: pointer; }
+    .nav-toggle svg { width: 21px; height: 21px; }
+    .mobile-nav { display: none; }
 
-    /* ---------- TYPOGRAPHY ---------- */
-    .display {
-      font-family: 'Fraunces', ui-serif, Georgia, serif;
-      font-optical-sizing: auto;
-      font-variation-settings: "SOFT" 30, "opsz" 144;
-      font-weight: 400;
-      letter-spacing: -0.035em;
-      line-height: 0.95;
-    }
-    .display-italic { font-style: italic; font-variation-settings: "SOFT" 50, "opsz" 144; }
-    .mono {
-      font-family: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
-      font-feature-settings: "calt" 1;
-    }
-    .eyebrow {
-      font-family: 'JetBrains Mono', ui-monospace, monospace;
-      font-size: 11px;
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
-      color: var(--ink-3);
-    }
-    .eyebrow .num { color: var(--accent); margin-right: 10px; }
+    /* --------------------------------- Hero -------------------------------- */
+    .hero { padding: clamp(62px, 8vw, 115px) 0 97px; }
+    .hero-grid { display: grid; grid-template-columns: minmax(0, 1.25fr) minmax(270px,.75fr); align-items: center; gap: clamp(40px, 6vw, 90px); }
+    .hero h1 { font-family: var(--serif); font-weight: 500; font-size: clamp(3.1rem, 6.15vw, 5.7rem); line-height: 1.02; letter-spacing: -.056em; margin: 15px 0 27px; max-width: 680px; }
+    .hero-lead { font-family: var(--serif); font-size: clamp(1.45rem,2.2vw,1.88rem); line-height: 1.36; letter-spacing: -.025em; color: var(--ink); max-width: 630px; margin: 0 0 20px; }
+    .hero-support { color: var(--body); font-size: 1rem; line-height: 1.75; max-width: 590px; margin: 0; }
+    .hero-actions { display: flex; align-items: center; flex-wrap: wrap; gap: 12px; margin: 29px 0 0; }
+    .hero-profile { margin: 35px 0 0; color: var(--muted); font-size: .88rem; }
+    .hero-profile a { font-weight: 600; }
+    .photo-frame { margin: 0; position: relative; }
+    .photo-frame::before { content: ''; position: absolute; z-index: -1; width: 80%; height: 79%; background: var(--teal-soft); right: -18px; bottom: -18px; border: 1px solid #c3dad8; }
+    .portrait { width: 100%; height: clamp(410px, 39vw, 525px); object-fit: cover; object-position: 51% 27%; border-radius: 3px; }
+    .photo-frame figcaption { font-size: .77rem; color: var(--muted); margin-top: 17px; text-align: right; }
+    .hero-social { display: flex; align-items: center; gap: 18px; flex-wrap: wrap; margin-top: 17px; }
+    .hero-social a { color: var(--body); font-size: .84rem; font-weight: 600; }
+    .hero-social a:hover { color: var(--teal-dark); }
 
-    /* ---------- LAYOUT ---------- */
-    .container { max-width: var(--container); margin: 0 auto; padding: 0 28px; position: relative; z-index: 1; }
-    section { padding: 96px 0; position: relative; }
-    section + section { border-top: 1px solid var(--line); }
+    /* --------------------------------- About ------------------------------- */
+    .about-grid { display: grid; grid-template-columns: minmax(180px,.48fr) minmax(0,1fr); gap: clamp(40px,7vw,110px); align-items: start; }
+    .about-aside { padding-top: 5px; }
+    .about-aside .subline { width: 56px; height: 3px; background: var(--teal); margin: 24px 0; }
+    .about-aside p { font-size: .87rem; color: var(--muted); line-height: 1.72; margin: 0; }
+    .about-copy { max-width: 750px; }
+    .about-copy p { color: var(--body); font-size: 1.04rem; line-height: 1.82; margin: 0 0 20px; }
+    .about-copy p:first-child { font-family: var(--serif); font-size: clamp(1.37rem, 2.25vw, 1.7rem); line-height: 1.5; color: var(--ink); letter-spacing: -.018em; }
+    .about-copy p:last-child { margin-bottom: 0; }
 
-    /* ---------- NAV ---------- */
-    .nav {
-      position: sticky; top: 0; z-index: 50;
-      backdrop-filter: blur(14px) saturate(140%);
-      -webkit-backdrop-filter: blur(14px) saturate(140%);
-      background: rgba(11, 11, 13, 0.72);
-      border-bottom: 1px solid transparent;
-      transition: border-color 0.3s ease, background 0.3s ease;
-    }
-    .nav.scrolled { border-bottom-color: var(--line); }
-    .nav-inner {
-      display: flex; align-items: center; justify-content: space-between;
-      padding: 16px 28px;
-      max-width: var(--container); margin: 0 auto;
-    }
-    .brand {
-      display: flex; align-items: center; gap: 10px;
-      font-family: 'Fraunces', serif; font-weight: 500; font-size: 17px;
-      letter-spacing: -0.02em;
-    }
-    .brand .dot {
-      width: 8px; height: 8px; border-radius: 50%;
-      background: var(--accent);
-      box-shadow: 0 0 0 4px var(--accent-soft);
-      animation: pulse 2.4s ease-in-out infinite;
-    }
-    @keyframes pulse {
-      0%, 100% { box-shadow: 0 0 0 4px var(--accent-soft); }
-      50% { box-shadow: 0 0 0 8px rgba(212,165,114,0.05); }
-    }
-    .nav-links { display: flex; gap: 4px; align-items: center; }
-    .nav-links a {
-      padding: 8px 14px; border-radius: 999px;
-      font-size: 13.5px; color: var(--ink-2);
-      transition: color 0.2s ease, background 0.2s ease;
-    }
-    .nav-links a:hover { color: var(--ink); background: var(--bg-3); }
-    .nav-cta {
-      margin-left: 8px;
-      padding: 8px 14px; border-radius: 999px;
-      font-size: 13.5px; color: var(--bg);
-      background: var(--accent);
-      transition: transform 0.2s ease, background 0.25s ease;
-    }
-    .nav-cta:hover { background: var(--accent-2); transform: translateY(-1px); }
-    .menu-btn {
-      display: none; background: none; border: 1px solid var(--line);
-      color: var(--ink); padding: 8px 12px; border-radius: 8px; cursor: pointer;
-      font-family: inherit; font-size: 13px;
-    }
+    /* -------------------------------- Research ----------------------------- */
+    .research-overview { display: grid; grid-template-columns: 1fr 1fr; gap: 34px; }
+    .feature { min-width: 0; border: 1px solid var(--rule); background: var(--white); overflow: hidden; display: flex; flex-direction: column; }
+    .feature-figure { min-height: 260px; background: #ecf2f1; border-bottom: 1px solid var(--rule); display: flex; align-items: center; justify-content: center; padding: 26px; }
+    .feature-figure.diagram { background: #fff; }
+    .feature-figure img { width: 100%; height: auto; object-fit: contain; }
+    .figure-note { color: var(--muted); font-size: .75rem; margin: 12px 0 0; text-align: left; line-height: 1.45; }
+    .figure-wrapper { width: 100%; }
+    .feature-body { flex: 1; padding: 32px 31px 33px; }
+    .feature-body h3 { font: 500 1.78rem/1.18 var(--serif); letter-spacing: -.03em; margin: 12px 0 14px; }
+    .feature-body p { font-size: .96rem; color: var(--body); line-height: 1.75; margin: 0 0 15px; }
+    .feature-body p:last-child { margin-bottom: 0; }
+    .research-meta { font-size: .77rem; letter-spacing: .03em; color: var(--teal-dark); font-weight: 600; }
+    .feature-links { display: flex; gap: 18px; flex-wrap: wrap; margin-top: 22px; }
+    .research-subtitle { margin: 60px 0 21px; font: 500 1.65rem/1.25 var(--serif); letter-spacing: -.023em; }
+    .research-more { border-top: 1px solid var(--rule); }
+    .research-row { display: grid; grid-template-columns: minmax(175px,.45fr) minmax(0,1fr); gap: 28px; padding: 23px 0; border-bottom: 1px solid var(--rule); }
+    .research-row h4 { margin: 0 0 5px; font: 500 1.3rem/1.27 var(--serif); letter-spacing: -.02em; }
+    .research-row p { margin: 0; color: var(--body); line-height: 1.72; font-size: .95rem; }
+    .research-row .tag { color: var(--muted); font-size: .75rem; }
+    .research-scope { color: var(--muted); font-size: .82rem; margin: 30px 0 0; }
 
-    /* ---------- HERO ---------- */
-    .hero { padding: 110px 0 80px; position: relative; }
-    .hero-grid {
-      display: grid; grid-template-columns: 1.5fr 1fr; gap: 64px;
-      align-items: end;
-    }
-    .hero-meta {
-      display: flex; align-items: center; gap: 14px;
-      margin-bottom: 28px;
-    }
-    .status-pill {
-      display: inline-flex; align-items: center; gap: 8px;
-      padding: 6px 12px; border-radius: 999px;
-      background: var(--bg-3); border: 1px solid var(--line);
-      font-size: 12px; color: var(--ink-2);
-    }
-    .status-pill .live {
-      width: 6px; height: 6px; border-radius: 50%;
-      background: #6ee7a7;
-      box-shadow: 0 0 10px #6ee7a7;
-    }
-    .hero h1.display {
-      font-size: clamp(52px, 9vw, 124px);
-      margin: 0 0 24px;
-      color: var(--ink);
-    }
-    .hero h1 .accent { color: var(--accent); font-style: italic; font-weight: 300; }
-    .hero-tag {
-      font-size: 18px; color: var(--ink-2); max-width: 560px;
-      line-height: 1.55;
-    }
-    .hero-tag strong { color: var(--ink); font-weight: 500; }
-    .hero-side {
-      border-left: 1px solid var(--line);
-      padding-left: 32px;
-      display: flex; flex-direction: column; gap: 26px;
-    }
-    .hero-fact .label {
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 10.5px; letter-spacing: 0.18em; text-transform: uppercase;
-      color: var(--ink-3); margin-bottom: 6px;
-    }
-    .hero-fact .value { color: var(--ink); font-size: 15px; }
-    .hero-fact .value a { border-bottom: 1px dashed var(--ink-4); transition: border-color 0.2s, color 0.2s; }
-    .hero-fact .value a:hover { color: var(--accent); border-color: var(--accent); }
+    /* Diagram for analytical prototype: explanatory, not hardware implementation */
+    .workflow { width: 100%; max-width: 485px; margin: 0 auto; }
+    .workflow-name { color: var(--teal-dark); font-size: .68rem; font-weight: 700; text-transform: uppercase; letter-spacing: .1em; margin: 0 0 20px; }
+    .workflow-track { display: grid; grid-template-columns: 1fr 17px 1fr; gap: 11px; align-items: center; }
+    .workflow-step { border: 1px solid #b7cccd; background: var(--white); min-height: 57px; display: flex; align-items: center; padding: 12px; font-size: .84rem; line-height: 1.3; color: var(--ink); font-weight: 600; }
+    .workflow-step.output { background: #dceae8; }
+    .workflow-arrow { color: var(--teal); font-size: 1.25rem; font-weight: 700; text-align: center; }
+    .workflow-detail { margin-top: 22px; display: flex; justify-content: center; gap: 8px; flex-wrap: wrap; }
+    .workflow-detail span { background: #fff; border: 1px solid #cbdddd; padding: 4px 9px; border-radius: 2px; font-size: .68rem; color: var(--muted); }
 
-    .socials { display: flex; gap: 10px; margin-top: 36px; }
-    .socials a {
-      width: 40px; height: 40px; display: inline-flex; align-items: center; justify-content: center;
-      border: 1px solid var(--line); border-radius: 10px; color: var(--ink-2);
-      transition: all 0.2s ease;
-    }
-    .socials a:hover {
-      color: var(--accent); border-color: var(--accent-line);
-      transform: translateY(-2px);
-      background: var(--accent-soft);
-    }
-    .socials svg { width: 18px; height: 18px; }
+    /* ------------------------------- Publications -------------------------- */
+    .pub-group-title { display: flex; justify-content: space-between; gap: 15px; align-items: center; padding-bottom: 12px; border-bottom: 1px solid var(--ink); font-size: .81rem; font-weight: 700; letter-spacing: .09em; text-transform: uppercase; }
+    .pub-group-title.secondary { margin-top: 41px; }
+    .publication { display: grid; grid-template-columns: 82px minmax(0,1fr) auto; align-items: start; gap: 30px; padding: 25px 0; border-bottom: 1px solid var(--rule); }
+    .pub-year { font-size: .82rem; color: var(--muted); padding-top: 4px; }
+    .pub-main h3 { font-family: var(--serif); font-size: clamp(1.08rem,1.65vw,1.27rem); line-height: 1.37; font-weight: 500; letter-spacing: -.018em; margin: 0 0 9px; }
+    .pub-authors { color: var(--body); font-size: .83rem; line-height: 1.6; margin: 0 0 5px; }
+    .pub-authors strong { font-weight: 700; color: var(--ink); }
+    .pub-venue { color: var(--muted); font-size: .83rem; margin: 0; }
+    .pub-action { font-size: .79rem; white-space: nowrap; font-weight: 600; padding-top: 3px; }
+    .pub-status { font-size: .75rem; color: var(--muted); white-space: nowrap; margin-top: 4px; }
 
-    /* ---------- SECTION HEADERS ---------- */
-    .section-head {
-      display: flex; align-items: baseline; justify-content: space-between;
-      margin-bottom: 56px; gap: 24px; flex-wrap: wrap;
-    }
-    .section-head h2 {
-      font-family: 'Fraunces', serif;
-      font-size: clamp(34px, 4.5vw, 52px);
-      font-weight: 400; letter-spacing: -0.025em;
-      margin: 12px 0 0; line-height: 1;
-    }
-    .section-head h2 em { font-style: italic; color: var(--accent); font-weight: 300; }
-    .section-head .lede { color: var(--ink-2); max-width: 380px; font-size: 15px; }
+    /* ------------------------------ Lower sections ------------------------- */
+    .split-grid { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(42px,7vw,105px); }
+    .split-heading { margin: 0 0 22px; font: 500 1.52rem/1.28 var(--serif); letter-spacing: -.024em; }
+    .plain-list { list-style: none; margin: 0; padding: 0; }
+    .plain-list li { border-top: 1px solid var(--rule); padding: 16px 0 17px; }
+    .plain-list li:last-child { border-bottom: 1px solid var(--rule); }
+    .plain-list strong { display: block; margin: 0 0 4px; font-size: .95rem; font-weight: 600; }
+    .plain-list p { margin: 0; color: var(--body); font-size: .89rem; line-height: 1.7; }
+    .education-row { border-top: 1px solid var(--rule); padding: 19px 0 17px; display: grid; grid-template-columns: minmax(0,1fr) auto; gap: 18px; }
+    .education-row:last-child { border-bottom: 1px solid var(--rule); }
+    .education-row h3 { font-size: .97rem; margin: 0 0 3px; line-height: 1.45; }
+    .education-row p { margin: 0; color: var(--body); font-size: .86rem; }
+    .education-row .edu-meta { color: var(--muted); font-size: .82rem; margin-top: 5px; }
+    .education-row time { color: var(--muted); font-size: .8rem; text-align: right; }
+    .honor-list { list-style: none; margin: 0; padding: 0; }
+    .honor-list li { padding: 14px 0; border-top: 1px solid var(--rule); display: grid; grid-template-columns: 1fr auto; gap: 15px; font-size: .92rem; }
+    .honor-list li:last-child { border-bottom: 1px solid var(--rule); }
+    .honor-list span { color: var(--muted); font-size: .81rem; }
 
-    /* ---------- ABOUT / NOW ---------- */
-    .about-grid {
-      display: grid; grid-template-columns: 1fr 1.3fr; gap: 80px;
-      align-items: start;
-    }
-    .portrait-wrap {
-      position: sticky; top: 100px;
-    }
-    .portrait {
-      aspect-ratio: 4/5;
-      border-radius: var(--radius);
-      background: linear-gradient(135deg, #1a1a1f 0%, #0f0f12 100%);
-      border: 1px solid var(--line);
-      overflow: hidden; position: relative;
-      display: flex; align-items: center; justify-content: center;
-      color: var(--ink-3); font-size: 13px; text-align: center; padding: 20px;
-    }
-    .portrait::after {
-      content: ""; position: absolute; inset: 0;
-      background:
-        radial-gradient(circle at 30% 20%, rgba(212,165,114,0.12), transparent 50%),
-        repeating-linear-gradient(45deg, transparent 0 2px, rgba(255,255,255,0.015) 2px 4px);
-      pointer-events: none;
-    }
-    .portrait .placeholder {
-      position: relative; z-index: 1;
-      border: 1px dashed var(--line-strong);
-      padding: 30px; border-radius: 8px;
-      max-width: 80%;
-    }
-    .portrait .placeholder strong { color: var(--accent); display: block; margin-bottom: 8px; font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.15em; }
+    /* ---------------------------- Contact / footer ------------------------- */
+    .contact { background: var(--night); color: #f4f8f8; padding: 83px 0 75px; }
+    .contact .eyebrow { color: #9ad5da; }
+    .contact h2 { font: 500 clamp(2.2rem,4.4vw,3.5rem)/1.15 var(--serif); letter-spacing: -.035em; margin: 11px 0 19px; }
+    .contact p { max-width: 570px; color: #d1dddf; font-size: 1.04rem; margin: 0 0 30px; }
+    .contact-email { color: #fff; font-size: clamp(1rem,2.2vw,1.35rem); text-decoration-color: #a2c9cb; text-underline-offset: .22em; word-break: break-word; }
+    .contact-email:hover { color: #afe1e4; }
+    .contact-social { display: flex; gap: 23px; flex-wrap: wrap; margin-top: 27px; }
+    .contact-social a { color: #cce0e2; font-size: .88rem; }
+    .contact-social a:hover { color: #fff; }
+    .site-footer { background: var(--night); border-top: 1px solid #35515c; padding: 21px 0 26px; color: #b3c5c9; font-size: .78rem; }
+    .footer-inner { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 12px; }
+    .footer-inner a { color: #cce0e2; }
 
-    .about-body p {
-      font-size: 18px; line-height: 1.7; color: var(--ink-2);
-      margin: 0 0 20px;
+    /* ------------------------------- Responsive ---------------------------- */
+    @media (max-width: 970px) {
+      .hero-grid { grid-template-columns: minmax(0,1.22fr) minmax(245px,.78fr); gap: 34px; }
+      .hero h1 { font-size: clamp(2.9rem, 6.4vw, 4.6rem); }
+      .feature-body { padding: 25px 23px; }
+      .section-top { align-items: start; flex-direction: column; gap: 12px; }
+      .section-top .section-intro { max-width: 700px; }
+      .feature-figure { min-height: 230px; padding: 20px; }
     }
-    .about-body p strong { color: var(--ink); font-weight: 500; }
-    .about-body p .quote {
-      font-family: 'Fraunces', serif; font-style: italic; color: var(--accent-2);
+    @media (max-width: 750px) {
+      html { scroll-padding-top: 78px; }
+      .container, .header-inner { width: min(calc(100% - 40px), var(--container)); }
+      .site-header .desktop-nav { display: none; }
+      .nav-toggle { display: inline-flex; }
+      .mobile-nav { display: none; border-top: 1px solid var(--rule); background: var(--paper); }
+      .mobile-nav.is-open { display: block; }
+      .mobile-nav-inner { width: min(calc(100% - 40px), var(--container)); margin: 0 auto; display: flex; flex-direction: column; padding: 12px 0 20px; }
+      .mobile-nav a { padding: 11px 2px; text-decoration: none; font-weight: 600; color: var(--ink); border-bottom: 1px solid var(--rule); }
+      .mobile-nav a:last-child { border-bottom: none; }
+      .header-inner { min-height: 67px; }
+      .section { padding: 66px 0; }
+      .hero { padding: 63px 0 70px; }
+      .hero-grid { grid-template-columns: 1fr; gap: 43px; }
+      .hero h1 { font-size: clamp(3rem, 10vw, 4.6rem); }
+      .hero-photo-container { max-width: 500px; }
+      .photo-frame::before { right: -11px; bottom: -11px; }
+      .portrait { height: 410px; object-position: 50% 27%; }
+      .about-grid { grid-template-columns: 1fr; gap: 27px; }
+      .about-aside { display: flex; align-items: center; flex-wrap: wrap; gap: 14px; }
+      .about-aside .subline { display: none; }
+      .about-aside p { max-width: 360px; }
+      .research-overview, .split-grid { grid-template-columns: 1fr; gap: 22px; }
+      .feature-figure { min-height: 265px; }
+      .research-subtitle { margin-top: 42px; }
+      .research-row { grid-template-columns: 1fr; gap: 8px; }
+      .publication { grid-template-columns: 1fr; gap: 8px; }
+      .pub-year { padding-top: 0; }
+      .pub-action, .pub-status { margin: 0; padding: 0; }
+      .pub-main h3 { font-size: 1.2rem; }
     }
-
-    .now-card {
-      margin-top: 36px;
-      border: 1px solid var(--line);
-      border-radius: var(--radius);
-      padding: 24px;
-      background: linear-gradient(180deg, var(--bg-2), var(--bg));
+    @media (max-width: 430px) {
+      .container, .header-inner, .mobile-nav-inner { width: min(calc(100% - 34px), var(--container)); }
+      .hero h1 { font-size: clamp(2.7rem,12vw,3.65rem); }
+      .hero-lead { font-size: 1.48rem; }
+      .hero-actions { gap: 10px; }
+      .pill-link { font-size: .83rem; padding: 10px 13px; }
+      .feature-body { padding: 23px 19px; }
+      .feature-figure { min-height: 215px; padding: 15px; }
+      .workflow-track { gap: 5px; grid-template-columns: 1fr 12px 1fr; }
+      .workflow-step { font-size: .73rem; padding: 9px; min-height: 56px; }
+      .education-row { grid-template-columns: 1fr; gap: 5px; }
+      .education-row time { text-align: left; }
     }
-    .now-card .now-head {
-      display: flex; align-items: center; gap: 10px; margin-bottom: 16px;
-    }
-    .now-card .now-head .dot {
-      width: 8px; height: 8px; border-radius: 50%;
-      background: var(--accent); box-shadow: 0 0 12px var(--accent);
-    }
-    .now-card .now-head h3 {
-      margin: 0; font-family: 'JetBrains Mono', monospace; font-size: 12px;
-      letter-spacing: 0.18em; text-transform: uppercase; color: var(--ink-3);
-    }
-    .now-list { list-style: none; padding: 0; margin: 0; display: grid; gap: 12px; }
-    .now-list li {
-      display: grid; grid-template-columns: 80px 1fr; gap: 16px;
-      font-size: 14.5px; color: var(--ink-2);
-      padding-bottom: 12px; border-bottom: 1px dashed var(--line);
-    }
-    .now-list li:last-child { border-bottom: none; padding-bottom: 0; }
-    .now-list .when { font-family: 'JetBrains Mono', monospace; font-size: 11.5px; color: var(--ink-3); padding-top: 2px; }
-    .now-list .what strong { color: var(--ink); font-weight: 500; }
-
-    /* ---------- RESEARCH PROJECTS ---------- */
-    .research-list { display: grid; gap: 32px; }
-    .project {
-      display: grid; grid-template-columns: 220px 1fr; gap: 48px;
-      padding: 40px;
-      border: 1px solid var(--line); border-radius: var(--radius);
-      background: linear-gradient(180deg, var(--bg-2), var(--bg));
-      position: relative;
-      transition: border-color 0.3s ease, transform 0.3s ease;
-    }
-    .project:hover { border-color: var(--line-strong); }
-    .project .project-meta {
-      display: flex; flex-direction: column; gap: 14px;
-      border-right: 1px solid var(--line); padding-right: 32px;
-    }
-    .project .pnum {
-      font-family: 'Fraunces', serif; font-size: 56px; line-height: 1;
-      color: var(--accent); font-weight: 300; font-style: italic;
-    }
-    .project .pwhen {
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 11.5px; letter-spacing: 0.12em;
-      color: var(--ink-3);
-    }
-    .project .pfunder {
-      font-size: 13px; color: var(--ink-2);
-      padding: 8px 12px; background: var(--accent-soft);
-      border: 1px solid var(--accent-line); border-radius: 6px;
-      align-self: flex-start;
-    }
-    .project h3 {
-      font-family: 'Fraunces', serif; font-weight: 400;
-      font-size: 28px; line-height: 1.15; letter-spacing: -0.02em;
-      margin: 0 0 12px; color: var(--ink);
-    }
-    .project h3 em { font-style: italic; color: var(--accent-2); }
-    .project .role {
-      font-family: 'JetBrains Mono', monospace; font-size: 11.5px;
-      letter-spacing: 0.12em; text-transform: uppercase;
-      color: var(--ink-3); margin-bottom: 18px;
-    }
-    .project p { color: var(--ink-2); margin: 0 0 18px; font-size: 15.5px; line-height: 1.65; }
-    .project ul.bullets { list-style: none; margin: 0 0 22px; padding: 0; display: grid; gap: 12px; }
-    .project ul.bullets li {
-      padding-left: 22px; position: relative;
-      color: var(--ink-2); font-size: 14.5px; line-height: 1.6;
-    }
-    .project ul.bullets li::before {
-      content: "▸"; position: absolute; left: 0; top: 0; color: var(--accent);
-      font-size: 13px;
-    }
-    .project ul.bullets strong { color: var(--ink); font-weight: 500; }
-    .project .metric {
-      display: inline-flex; align-items: center; gap: 12px;
-      padding: 12px 16px; background: var(--bg-3); border: 1px solid var(--line);
-      border-left: 3px solid var(--accent); border-radius: 6px;
-      font-family: 'JetBrains Mono', monospace; font-size: 13px;
-      color: var(--ink-2);
-    }
-    .project .metric .icon { color: var(--accent); }
-    .project .metric strong { color: var(--ink); font-weight: 500; }
-
-    /* ---------- PUBLICATIONS ---------- */
-    .pub-tabs {
-      display: inline-flex; gap: 4px; padding: 4px;
-      background: var(--bg-2); border: 1px solid var(--line);
-      border-radius: 999px; margin-bottom: 32px;
-    }
-    .pub-tabs button {
-      padding: 8px 18px; border-radius: 999px; border: none; cursor: pointer;
-      background: transparent; color: var(--ink-2);
-      font-family: inherit; font-size: 13px;
-      transition: all 0.2s ease;
-    }
-    .pub-tabs button.active { background: var(--accent); color: var(--bg); }
-
-    .pub-list { display: grid; gap: 0; }
-    .pub {
-      display: grid; grid-template-columns: 100px 1fr auto; gap: 28px;
-      padding: 28px 0; border-bottom: 1px solid var(--line);
-      align-items: start;
-    }
-    .pub:last-child { border-bottom: none; }
-    .pub .pyear {
-      font-family: 'Fraunces', serif; font-style: italic; font-weight: 300;
-      font-size: 32px; color: var(--accent); line-height: 1;
-    }
-    .pub .pyear .venue {
-      display: block; font-family: 'JetBrains Mono', monospace; font-style: normal;
-      font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase;
-      color: var(--ink-3); margin-top: 8px; font-weight: 400;
-    }
-    .pub .pbody h4 {
-      font-family: 'Fraunces', serif; font-weight: 400;
-      font-size: 21px; line-height: 1.3; letter-spacing: -0.015em;
-      margin: 0 0 10px; color: var(--ink);
-    }
-    .pub .pauthors { font-size: 14px; color: var(--ink-2); line-height: 1.55; }
-    .pub .pauthors .me { color: var(--accent-2); font-weight: 500; }
-    .pub .pvenue {
-      margin-top: 8px; font-size: 13px; color: var(--ink-3); font-style: italic;
-    }
-    .pub .pactions { display: flex; flex-direction: column; gap: 6px; }
-    .pub .plink {
-      font-family: 'JetBrains Mono', monospace; font-size: 11.5px;
-      padding: 6px 10px; border: 1px solid var(--line); border-radius: 6px;
-      color: var(--ink-2); display: inline-flex; align-items: center; gap: 6px;
-      transition: all 0.2s ease;
-    }
-    .pub .plink:hover { color: var(--accent); border-color: var(--accent-line); background: var(--accent-soft); }
-    .pub-pane { display: none; }
-    .pub-pane.active { display: block; animation: fadeIn 0.4s ease; }
-    @keyframes fadeIn { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }
-
-    /* ---------- EXPERIENCE TIMELINE ---------- */
-    .timeline { position: relative; padding-left: 28px; }
-    .timeline::before {
-      content: ""; position: absolute; left: 7px; top: 8px; bottom: 8px;
-      width: 1px; background: var(--line);
-    }
-    .tl-item { position: relative; padding-bottom: 40px; }
-    .tl-item:last-child { padding-bottom: 0; }
-    .tl-item::before {
-      content: ""; position: absolute; left: -25px; top: 8px;
-      width: 11px; height: 11px; border-radius: 50%;
-      background: var(--bg); border: 2px solid var(--accent);
-    }
-    .tl-item .tl-when {
-      font-family: 'JetBrains Mono', monospace; font-size: 11.5px;
-      letter-spacing: 0.12em; color: var(--ink-3); margin-bottom: 6px;
-    }
-    .tl-item h4 {
-      font-family: 'Fraunces', serif; font-weight: 400; font-size: 22px;
-      letter-spacing: -0.015em; margin: 0 0 4px; color: var(--ink);
-    }
-    .tl-item .tl-where { color: var(--accent-2); font-size: 14px; margin-bottom: 14px; }
-    .tl-item ul { list-style: none; padding: 0; margin: 0; display: grid; gap: 10px; }
-    .tl-item ul li { color: var(--ink-2); font-size: 14.5px; line-height: 1.6; padding-left: 16px; position: relative; }
-    .tl-item ul li::before { content: "—"; position: absolute; left: 0; color: var(--ink-4); }
-    .tl-item ul strong { color: var(--ink); font-weight: 500; }
-    .tl-item ul .hl { color: var(--accent); font-family: 'JetBrains Mono', monospace; font-size: 13px; }
-
-    /* ---------- TWO-COL ---------- */
-    .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 56px; }
-    .col-card h3 {
-      font-family: 'Fraunces', serif; font-weight: 400; font-size: 24px;
-      letter-spacing: -0.015em; margin: 0 0 20px; color: var(--ink);
-    }
-    .col-card ul { list-style: none; padding: 0; margin: 0; display: grid; gap: 18px; }
-    .col-card ul li {
-      padding-bottom: 18px; border-bottom: 1px dashed var(--line);
-      color: var(--ink-2); font-size: 14.5px; line-height: 1.6;
-    }
-    .col-card ul li:last-child { border-bottom: none; padding-bottom: 0; }
-    .col-card ul li strong { color: var(--ink); display: block; margin-bottom: 4px; font-weight: 500; }
-
-    /* ---------- EDUCATION CARDS ---------- */
-    .edu-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
-    .edu-card {
-      padding: 28px; border: 1px solid var(--line);
-      border-radius: var(--radius); background: var(--bg-2);
-      position: relative; overflow: hidden;
-      transition: transform 0.3s ease, border-color 0.3s ease;
-    }
-    .edu-card:hover { transform: translateY(-3px); border-color: var(--accent-line); }
-    .edu-card .deg {
-      font-family: 'JetBrains Mono', monospace; font-size: 11px;
-      letter-spacing: 0.15em; text-transform: uppercase;
-      color: var(--accent); margin-bottom: 8px;
-    }
-    .edu-card h4 {
-      font-family: 'Fraunces', serif; font-weight: 400; font-size: 22px;
-      letter-spacing: -0.015em; margin: 0 0 6px; line-height: 1.2;
-    }
-    .edu-card .where { color: var(--ink-2); font-size: 14px; margin-bottom: 16px; }
-    .edu-card .meta {
-      font-family: 'JetBrains Mono', monospace; font-size: 11.5px;
-      color: var(--ink-3); padding-top: 12px;
-      border-top: 1px solid var(--line);
-    }
-    .edu-card .meta div + div { margin-top: 4px; }
-
-    .honors {
-      margin-top: 28px;
-      padding: 24px;
-      border: 1px solid var(--line); border-radius: var(--radius);
-      background: var(--bg-2);
-    }
-    .honors h4 {
-      font-family: 'JetBrains Mono', monospace; font-size: 11px;
-      letter-spacing: 0.18em; text-transform: uppercase;
-      color: var(--ink-3); margin: 0 0 16px;
-    }
-    .honors ul { list-style: none; padding: 0; margin: 0; display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
-    .honors li {
-      font-size: 14px; color: var(--ink-2);
-      padding-left: 18px; position: relative;
-    }
-    .honors li::before {
-      content: "✦"; position: absolute; left: 0; color: var(--accent); font-size: 11px;
-    }
-    .honors li strong { color: var(--ink); font-weight: 500; display: block; }
-
-    /* ---------- CONTACT / FOOTER ---------- */
-    .contact {
-      text-align: center; padding: 120px 0;
-    }
-    .contact h2 {
-      font-family: 'Fraunces', serif; font-weight: 300;
-      font-size: clamp(48px, 7vw, 92px); margin: 0 0 24px;
-      letter-spacing: -0.03em; line-height: 1;
-    }
-    .contact h2 em { font-style: italic; color: var(--accent); }
-    .contact p { color: var(--ink-2); max-width: 540px; margin: 0 auto 40px; font-size: 17px; }
-    .contact-cta {
-      display: inline-flex; align-items: center; gap: 10px;
-      padding: 14px 24px; border-radius: 999px;
-      background: var(--accent); color: var(--bg);
-      font-weight: 500; font-size: 15px;
-      transition: all 0.2s ease;
-    }
-    .contact-cta:hover { background: var(--accent-2); transform: translateY(-2px); }
-
-    footer {
-      border-top: 1px solid var(--line);
-      padding: 32px 0;
-      display: flex; justify-content: space-between; align-items: center;
-      flex-wrap: wrap; gap: 16px;
-      font-family: 'JetBrains Mono', monospace; font-size: 11.5px;
-      color: var(--ink-3); letter-spacing: 0.05em;
-    }
-    footer .ft-right { display: flex; gap: 18px; }
-    footer a:hover { color: var(--accent); }
-
-    /* ---------- REVEAL ANIMATIONS ---------- */
-    .reveal { opacity: 0; transform: translateY(20px); transition: opacity 0.8s ease, transform 0.8s cubic-bezier(0.2, 0.8, 0.2, 1); }
-    .reveal.in { opacity: 1; transform: none; }
-    .reveal.delay-1 { transition-delay: 0.08s; }
-    .reveal.delay-2 { transition-delay: 0.16s; }
-    .reveal.delay-3 { transition-delay: 0.24s; }
-
-    /* ---------- RESPONSIVE ---------- */
-    @media (max-width: 980px) {
-      section { padding: 72px 0; }
-      .hero { padding: 70px 0 40px; }
-      .hero-grid { grid-template-columns: 1fr; gap: 40px; }
-      .hero-side { border-left: none; padding-left: 0; border-top: 1px solid var(--line); padding-top: 32px; }
-      .about-grid { grid-template-columns: 1fr; gap: 40px; }
-      .portrait-wrap { position: static; }
-      .portrait { aspect-ratio: 16/9; }
-      .project { grid-template-columns: 1fr; gap: 24px; padding: 28px; }
-      .project .project-meta { border-right: none; padding-right: 0; flex-direction: row; align-items: center; gap: 20px; flex-wrap: wrap; }
-      .project .pnum { font-size: 36px; }
-      .pub { grid-template-columns: 1fr; gap: 12px; }
-      .pub .pactions { flex-direction: row; }
-      .two-col { grid-template-columns: 1fr; gap: 40px; }
-      .edu-grid { grid-template-columns: 1fr; }
-      .honors ul { grid-template-columns: 1fr; }
-      .nav-links { display: none; }
-      .menu-btn { display: inline-flex; }
-      .nav-links.open {
-        display: flex; flex-direction: column; align-items: stretch;
-        position: absolute; top: 100%; left: 0; right: 0;
-        background: var(--bg-2); border-top: 1px solid var(--line);
-        border-bottom: 1px solid var(--line); padding: 12px 20px;
-      }
-      .nav-links.open a { padding: 12px; }
-    }
-    @media (max-width: 600px) {
-      .container { padding: 0 20px; }
-      .nav-inner { padding: 14px 20px; }
-      .section-head { margin-bottom: 36px; }
-      .now-list li { grid-template-columns: 1fr; gap: 4px; }
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { scroll-behavior: auto !important; transition-duration: .01ms !important; animation-duration: .01ms !important; }
     }
   </style>
+  <noscript><style>@media (max-width:750px){.mobile-nav{display:block!important}.nav-toggle{display:none!important}}</style></noscript>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Muhammad Faraz Karim",
+    "url": "https://faraz-karim.github.io/",
+    "jobTitle": "PhD Candidate in Cybersecurity",
+    "affiliation": {"@type":"Organization","name":"Georgia Institute of Technology"},
+    "sameAs": ["https://scholar.google.com/citations?hl=en&user=a94Ar4MAAAAJ", "https://github.com/faraz-karim", "https://www.linkedin.com/in/farazkarim/"],
+    "knowsAbout": ["Cyber-physical systems security", "Systems security", "Real-time systems", "FPGA acceleration", "Fault tolerance"]
+  }
+  </script>
 </head>
 <body>
+  <a class="skip-link" href="#main">Skip to content</a>
 
-  <!-- ========== NAV ========== -->
-  <nav class="nav" id="nav">
-    <div class="nav-inner">
-      <a href="https://sites.gatech.edu/csafa/" class="brand">
-        <span class="dot"></span>
-        <span>CSAFA LABS</span>
-      </a>
-      <div class="nav-links" id="navLinks">
+  <header class="site-header">
+    <div class="header-inner">
+      <a class="wordmark" href="#top" aria-label="Faraz Karim, back to top">Faraz Karim<span aria-hidden="true" style="color:var(--teal)">.</span></a>
+      <nav class="desktop-nav" aria-label="Primary navigation">
         <a href="#about">About</a>
         <a href="#research">Research</a>
         <a href="#publications">Publications</a>
-        <a href="#experience">Experience</a>
-        <a href="#service">Teaching</a>
-        <a href="#education">Education</a>
-        <a href="#contact" class="nav-cta">Get in touch</a>
-      </div>
-      <button class="menu-btn" id="menuBtn" aria-label="Menu">Menu</button>
+        <a href="#teaching">Teaching &amp; Service</a>
+        <a href="assets/docs/Muhammad_Faraz_Karim_CV.pdf" target="_blank" rel="noopener" class="cv-nav">CV <span aria-hidden="true">↗</span></a>
+        <a href="#contact">Contact</a>
+      </nav>
+      <button class="nav-toggle" id="navToggle" type="button" aria-label="Open navigation" aria-controls="mobileNav" aria-expanded="false">
+        <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+      </button>
     </div>
-  </nav>
-
-  <div id="top"></div>
-
-  <!-- ========== HERO ========== -->
-  <header class="hero container">
-    <div class="hero-grid">
-      <div>
-        <div class="hero-meta reveal">
-          <span class="status-pill"><span class="live"></span> Open to research collaborations · 2026</span>
-        </div>
-        <h1 class="display reveal delay-1">
-          Muhammad<br/>
-          Faraz <span class="accent">Karim</span>
-        </h1>
-        <p class="hero-tag reveal delay-2">
-          Ph.D. candidate at <strong>Georgia Tech</strong> building resilient
-          <strong>cyber-physical systems</strong> and high-performance architectures
-          for <strong>AI/ML hardware acceleration</strong> on defense-relevant compute.
-        </p>
-        <div class="socials reveal delay-3">
-          <a href="mailto:faraz.karim1999@gmail.com" aria-label="Email">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg>
-          </a>
-          <a href="https://github.com/faraz-karim" target="_blank" aria-label="GitHub">
-            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5C5.7.5.5 5.7.5 12c0 5.1 3.3 9.4 7.8 10.9.6.1.8-.2.8-.6v-2c-3.2.7-3.9-1.4-3.9-1.4-.5-1.3-1.3-1.7-1.3-1.7-1.1-.7.1-.7.1-.7 1.2.1 1.8 1.2 1.8 1.2 1 1.8 2.7 1.3 3.4 1 .1-.8.4-1.3.7-1.6-2.6-.3-5.3-1.3-5.3-5.7 0-1.3.5-2.3 1.2-3.2-.1-.3-.5-1.5.1-3.1 0 0 1-.3 3.3 1.2 1-.3 2-.4 3-.4s2 .1 3 .4c2.3-1.6 3.3-1.2 3.3-1.2.7 1.6.2 2.8.1 3.1.8.8 1.2 1.9 1.2 3.2 0 4.5-2.7 5.4-5.3 5.7.4.4.8 1.1.8 2.2v3.3c0 .3.2.7.8.6 4.5-1.5 7.8-5.8 7.8-10.9C23.5 5.7 18.3.5 12 .5z"/></svg>
-          </a>
-          <a href="https://linkedin.com/in/farazkarim" target="_blank" aria-label="LinkedIn">
-            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.5 2h-17A1.5 1.5 0 0 0 2 3.5v17A1.5 1.5 0 0 0 3.5 22h17a1.5 1.5 0 0 0 1.5-1.5v-17A1.5 1.5 0 0 0 20.5 2zM8 19H5V9h3v10zM6.5 7.7a1.7 1.7 0 1 1 0-3.4 1.7 1.7 0 0 1 0 3.4zM19 19h-3v-5c0-1.2-.4-2-1.5-2-.8 0-1.3.6-1.5 1.1-.1.2-.1.5-.1.7V19h-3V9h3v1.3c.4-.6 1.1-1.5 2.7-1.5 2 0 3.4 1.3 3.4 4V19z"/></svg>
-          </a>
-          <a href="#" aria-label="Google Scholar"><!-- placeholder link -->
-            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 1 1 9l4 2.9V18l7 5 7-5v-6.1l2-1.5V18h2V9L12 1zm0 13.4-5-3.6 5-3.6 5 3.6-5 3.6z"/></svg>
-          </a>
-          <a href="#" aria-label="CV / Résumé"><!-- placeholder link to your PDF CV -->
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M14 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"/><path d="M14 3v6h6"/><path d="M9 13h6M9 17h6"/></svg>
-          </a>
-        </div>
+    <nav id="mobileNav" class="mobile-nav" aria-label="Mobile navigation">
+      <div class="mobile-nav-inner">
+        <a href="#about">About</a>
+        <a href="#research">Research</a>
+        <a href="#publications">Publications</a>
+        <a href="#teaching">Teaching &amp; Service</a>
+        <a href="assets/docs/Muhammad_Faraz_Karim_CV.pdf" target="_blank" rel="noopener">Curriculum Vitae ↗</a>
+        <a href="#contact">Contact</a>
       </div>
-
-      <aside class="hero-side reveal delay-2">
-        <div class="hero-fact">
-          <div class="label">Affiliation</div>
-          <div class="value">CSAFA Lab · Georgia Institute of Technology</div>
-        </div>
-        <div class="hero-fact">
-          <div class="label">Advisor</div>
-          <div class="value">Prof. J. Sukarno Mertoguno</div>
-        </div>
-        <div class="hero-fact">
-          <div class="label">Status</div>
-          <div class="value">Advanced to Candidacy · Nov 2025</div>
-        </div>
-        <div class="hero-fact">
-          <div class="label">Based in</div>
-          <div class="value">Atlanta, Georgia</div>
-        </div>
-        <div class="hero-fact">
-          <div class="label">Contact</div>
-          <div class="value"><a href="mailto:faraz.karim1999@gmail.com">faraz.karim1999@gmail.com</a></div>
-        </div>
-      </aside>
-    </div>
+    </nav>
   </header>
 
-  <!-- ========== ABOUT / NOW ========== -->
-  <section id="about">
-    <div class="container">
-      <div class="section-head reveal">
+  <main id="main">
+    <div id="top"></div>
+    <section class="hero" aria-labelledby="page-title">
+      <div class="container hero-grid">
         <div>
-          <!-- <div class="eyebrow"><span class="num">01</span>About &amp; Now</div>
-          <h2>Securing the systems <em>that move the world.</em></h2>
-        </div> -->
-        <p class="lede">A short orientation to my research interests, what I'm currently working on, and where I'm heading next.</p>
-      </div>
-
-      <div class="about-grid">
-        <div class="portrait-wrap reveal">
-          <div class="portrait">
-            <!-- <div class="placeholder"> -->
-              <!-- <strong>// Portrait</strong> -->
-              <!-- Drop a 4:5 photograph here<br/>(e.g. <code>/img/portrait.jpg</code>) — replace this placeholder with a real <code>&lt;img&gt;</code> tag. -->
-              <img src="Me.jpg" alt="MFK - Portrait Photo" />
-
-            </div>
+          <p class="eyebrow">PhD candidate in Cybersecurity · Georgia Tech</p>
+          <h1 id="page-title">Muhammad<br>Faraz Karim</h1>
+          <p class="hero-lead">I study how computing systems can remain secure and useful when resources are limited.</p>
+          <p class="hero-support">My research spans resilient cyber-physical systems, real-time computing, and hardware-aware AI acceleration—with an emphasis on the trade-offs that arise in constrained environments.</p>
+          <div class="hero-actions">
+            <a href="#research" class="pill-link solid">Explore research <span aria-hidden="true">↗</span></a>
+            <a href="assets/docs/Muhammad_Faraz_Karim_CV.pdf" class="pill-link" target="_blank" rel="noopener">View CV <span aria-hidden="true">↗</span></a>
+          </div>
+          <p class="hero-profile"><a href="https://sites.gatech.edu/csafa/" target="_blank" rel="noopener noreferrer">CSAFA Lab</a> · Advised by Prof. J. Sukarno Mertoguno · Atlanta, GA</p>
+          <div class="hero-social" aria-label="Professional profiles">
+            <a href="https://scholar.google.com/citations?hl=en&amp;user=a94Ar4MAAAAJ" target="_blank" rel="noopener noreferrer">Google Scholar ↗</a>
+            <a href="https://github.com/faraz-karim" target="_blank" rel="noopener noreferrer">GitHub ↗</a>
+            <a href="https://www.linkedin.com/in/farazkarim/" target="_blank" rel="noopener noreferrer">LinkedIn ↗</a>
           </div>
         </div>
-
-        <div class="about-body reveal delay-1">
-          <p>
-            I'm a Ph.D. candidate in <strong>Cybersecurity</strong> at Georgia Tech, working at the intersection of
-            <strong>cyber-physical systems</strong>, <strong>autonomous robotics</strong>, and <strong>AI/ML hardware acceleration</strong>.
-            My work is supported by the U.S. Department of Energy through the <strong>BIRD Energy Consortium</strong>,
-            and is motivated by a single question — <span class="quote">how do we keep critical infrastructure trustworthy when adversaries are already inside?</span>
-          </p>
-          <p>
-            On the systems side, I design subprocess-level fault-tolerance architectures that let robotic controllers
-            recover from active cyber-attacks within a handful of scan cycles. On the hardware side, I'm building
-            architectures that repurpose idle DSP clusters on FPGAs into general-purpose AI accelerators — a low-cost,
-            energy-efficient path for advanced analytics on defense-relevant compute.
-          </p>
-          <p>
-            Before Georgia Tech, I worked on software-supply-chain security at LUMS, where I developed a BERT-based
-            optimization for LLVM and a debloating pipeline that cut exploitable code surface in half.
-          </p>
-
-          <div class="now-card">
-            <div class="now-head">
-              <span class="dot"></span>
-              <h3>Currently / Now</h3>
-            </div>
-            <ul class="now-list">
-              <li>
-                <span class="when">2026 Q2</span>
-                <span class="what"><strong>JBODSP Phase 2</strong> — leading the proof-of-concept architecture for generalized AI acceleration on idle DSP clusters.</span>
-              </li>
-              <li>
-                <span class="when">2026 Q1</span>
-                <span class="what"><strong>SubprocessBFT++</strong> under review at ICRA 2027; <strong>EviLLM</strong> under review at ICTAI 2026.</span>
-              </li>
-              <li>
-                <span class="when">Ongoing</span>
-                <span class="what">Co-developing the <strong>TinyML Security</strong> course with University of Washington — a lab-driven curriculum on attacking and defending embedded ML.</span>
-              </li>
-              <li>
-                <span class="when">Reading</span>
-                <span class="what"><em>Hands-On Large Language Models by Jay Alammar</em></span>
-              </li>
-            </ul>
-          </div>
+        <div class="hero-photo-container">
+          <figure class="photo-frame">
+            <img class="portrait" src="assets/images/faraz-portrait.webp" alt="Portrait photograph of Muhammad Faraz Karim" width="1014" height="1520" fetchpriority="high">
+            <figcaption>Georgia Institute of Technology</figcaption>
+          </figure>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- ========== RESEARCH ========== -->
-  <section id="research">
-    <div class="container">
-      <div class="section-head reveal">
-        <div>
-          <div class="eyebrow"><span class="num">02</span>Federally-Funded Research</div>
-          <!-- <h2>Two programs. <em>One thread —</em> resilient compute.</h2> -->
-           <h2>Main Research Projects</h2>
-        </div>
-        <p class="lede">Selected, federally-funded research projects led under the BIRD Energy Consortium for the U.S. Department of Energy.</p>
-      </div>
-
-      <div class="research-list">
-
-        <article class="project reveal">
-          <div class="project-meta">
-            <div class="pnum">01</div>
-            <div class="pwhen">NOV 2025 — PRESENT</div>
-            <div class="pfunder">DOE · BIRD Phase 2</div>
-          </div>
+    <section class="section" id="about" aria-labelledby="about-title">
+      <div class="container about-grid">
+        <div class="about-aside">
           <div>
-            <h3>JBODSP — Generalized AI Acceleration via <em>Idle DSP Clusters</em></h3>
-            <div class="role">Lead Researcher</div>
-            <p>
-              A proof-of-concept FPGA architecture that repurposes parallel DSP clusters as general-purpose AI accelerators.
-              Includes a Python-based OpenCL simulator that enforces Arria 10 memory constraints to enable rapid tile-plan validation.
-            </p>
-            <ul class="bullets">
-              <li><strong>Architecture.</strong> A three-tier parallelization framework — cross-CU dispatch, intra-CU unrolling, and temporal double-buffering — that fully overlaps DDR loads with compute, eliminating memory-access latency.</li>
-              <li><strong>Selection.</strong> Chosen to lead Phase 2 after Phase 1 outcomes for Task2.2 at GT.</li>
-              <li><strong>Impact.</strong> A low-cost, energy-efficient accelerator for U.S. critical infrastructure — directly supporting DOE objectives for advanced analytics on defense-relevant hardware.</li>
-            </ul>
-            <div class="metric">
-              <!-- <span class="icon">▲</span> -->
-              <span>Latency goal: <strong>full DDR/compute overlap</strong> on Arria&nbsp;10 — zero idle compute cycles.</span>
-            </div>
+            <span class="eyebrow">01 / About</span>
+            <h2 class="section-title" id="about-title">A little<br>about me</h2>
+            <div class="subline"></div>
+            <p>School of Cybersecurity and Privacy<br>College of Computing<br>Georgia Tech</p>
           </div>
+        </div>
+        <div class="about-copy">
+          <p>I'm drawn to resource-constrained systems because the constraints often reveal something interesting about the assumptions we take for granted.</p>
+          <p>Many design choices become conventions because they work well in a particular setting. But when the hardware, timing requirements, or threat model changes, those assumptions may no longer hold. I enjoy going back to the original problem, understanding why existing approaches look the way they do, and exploring parts of the solution space that may have been overlooked.</p>
+          <p>I'm a PhD candidate in Cybersecurity at Georgia Tech, working with Prof. J. Sukarno Mertoguno at CSAFA Lab. Much of my work asks how we can make secure and resilient computing practical on systems with limited processing resources or strict deadlines. More recently, I've also been studying efficient ML execution on FPGA and other constrained hardware.</p>
+          <p>Before Georgia Tech, I worked on compiler-based program debloating and software security at the Internet Security and Privacy Lab at LUMS.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="research" aria-labelledby="research-title">
+      <div class="container">
+        <div class="section-top">
+          <div><span class="eyebrow">02 / Research</span><h2 class="section-title" id="research-title">Selected research</h2></div>
+          <p class="section-intro">Systems security and efficient computation, often in places where timing, memory, and hardware budgets shape what is possible.</p>
+        </div>
+        <div class="research-overview">
+          <article class="feature" aria-labelledby="spbft-title">
+            <div class="feature-figure diagram">
+              <div class="figure-wrapper">
+                <a href="assets/images/subprocessbft-architecture.webp" target="_blank" rel="noopener" aria-label="Open full-size SubprocessBFT++ architecture diagram">
+                  <img src="assets/images/subprocessbft-architecture.webp" width="1820" height="879" loading="lazy" alt="SubprocessBFT++ mechanisms: redundancy executes two variants sequentially and validates output before mailbox commitment; reselection chooses one variant from a diversified set.">
+                </a>
+                <p class="figure-note">Redundancy and reselection in SubprocessBFT++ · From my research diagram (select to enlarge)</p>
+              </div>
+            </div>
+            <div class="feature-body">
+              <div class="research-meta">2023–2025 · BIRD Energy Consortium, Phase 1</div>
+              <h3 id="spbft-title">SubprocessBFT++</h3>
+              <p>Resilience mechanisms such as software replication can be difficult to deploy on robotic controllers with limited computing resources and tight scan-cycle deadlines.</p>
+              <p>SubprocessBFT++ decomposes controller software into subprocesses and uses diversified variants with supervisory wrappers. The design explores redundancy and reselection as ways to limit the effects of control-flow hijacking on single-controller systems.</p>
+              <p>The work has been evaluated through simulations, fault-injection experiments, and microcontroller-oriented studies, with attention to recovery behavior and execution overhead under the evaluated assumptions.</p>
+              <div class="feature-links"><a class="text-link" href="#under-review">Manuscript status <span class="inline-arrow" aria-hidden="true">↗</span></a><a class="text-link" href="https://doi.org/10.1145/3639570" target="_blank" rel="noopener noreferrer">Related BFT++ paper <span class="inline-arrow" aria-hidden="true">↗</span></a></div>
+            </div>
+          </article>
+          <article class="feature" aria-labelledby="jbodsp-title">
+            <div class="feature-figure">
+              <div class="workflow" role="img" aria-label="Conceptual workflow of the current JBODSP analytical simulator: a one-dimensional convolution layer is mapped to a tile plan, then to logical compute units and analytical resource and latency estimates.">
+                <p class="workflow-name">Current analytical prototype</p>
+                <div class="workflow-track"><div class="workflow-step">1D CNN layer specification</div><div class="workflow-arrow" aria-hidden="true">→</div><div class="workflow-step">Spatial / channel tiling</div><div class="workflow-step">Compute-unit distribution</div><div class="workflow-arrow" aria-hidden="true">→</div><div class="workflow-step output">Memory &amp; throughput estimates</div></div>
+                <div class="workflow-detail"><span>Arria 10 variants</span><span>M20K memory budget</span><span>Tile halos</span></div>
+              </div>
+            </div>
+            <div class="feature-body">
+              <div class="research-meta">2025–present · BIRD Energy Consortium, Phase 2</div>
+              <h3 id="jbodsp-title">JBODSP: making more of FPGA DSP resources</h3>
+              <p>I'm investigating how DSP clusters on FPGAs can be organized as configurable computational resources for machine-learning workloads, rather than treated only as isolated arithmetic units.</p>
+              <p>The current Python architectural simulator explores 1D convolution tiling, logical compute-unit scheduling, on-chip memory limits, and idealized throughput for Intel Arria 10 configurations.</p>
+              <p>The aim is to evaluate architectural and data-movement choices before hardware implementation. Double-buffering and more effective workload distribution are design directions being investigated, not yet measured hardware speedups.</p>
+              <p class="figure-note">Conceptual diagram of the software simulator's workflow; not an implemented FPGA datapath.</p>
+            </div>
+          </article>
+        </div>
+
+        <h3 class="research-subtitle">Other work in progress</h3>
+        <div class="research-more">
+          <article class="research-row">
+            <div><h4>Real-time resilient execution</h4><span class="tag">2026–present · Systems &amp; virtualization</span></div>
+            <p>Extending diversified subprocess execution to real-time cloud workloads. I'm investigating how Xen RTDS scheduling, Unikraft, execution budgets, and controlled output commitment might support resilience while respecting deadline constraints. This is ongoing design and implementation research.</p>
+          </article>
+          <article class="research-row">
+            <div><h4>LLM sparsity and error propagation</h4><span class="tag">2026–present · Efficient inference</span></div>
+            <p>Exploring magnitude-based suppression of attention QKV parameters and how approximation errors propagate through LLM inference. The broader goal is to understand when sparse execution and specialized zero-skipping hardware can meaningfully reduce compute and memory requirements.</p>
+          </article>
+          <article class="research-row">
+            <div><h4>EviLLM and LLM interface security</h4><span class="tag">LLM security · Browser instrumentation</span></div>
+            <p>Investigating security vulnerabilities in web-based LLM workflows through browser-level experimentation. EviLLM includes Chrome extension components for request inspection and modification, and UI/DOM instrumentation for studying how adversarial content reaches users and models.</p>
+          </article>
+        </div>
+        <p class="research-scope">The SubprocessBFT++ and JBODSP projects have been conducted in the context of the BIRD Energy Consortium's U.S. Department of Energy-supported research. Descriptions on this page distinguish ongoing designs and analytical prototypes from experimentally validated results.</p>
+      </div>
+    </section>
+
+    <section class="section" id="publications" aria-labelledby="publications-title">
+      <div class="container">
+        <div class="section-top">
+          <div><span class="eyebrow">03 / Publications</span><h2 class="section-title" id="publications-title">Publications</h2></div>
+          <p class="section-intro">Peer-reviewed work and current manuscripts. For updates and citation information, visit <a class="text-link" href="https://scholar.google.com/citations?hl=en&amp;user=a94Ar4MAAAAJ" target="_blank" rel="noopener noreferrer">Google Scholar ↗</a>.</p>
+        </div>
+        <div class="pub-group-title"><span>Peer-reviewed</span><span class="muted">3 publications</span></div>
+        <article class="publication">
+          <div class="pub-year"><time datetime="2024">2024</time></div>
+          <div class="pub-main"><h3>Rapid Autonomy Transfer in Reinforcement Learning with a Single Pre-Trained Critic</h3><p class="pub-authors"><strong>M. F. Karim</strong>, Y. Deng, L. Niu, B. Ramasubramanian, M. Alexiou, D. Sahabandu, R. Poovendran, J. S. Mertoguno</p><p class="pub-venue">IEEE International Conference on Tools with Artificial Intelligence (ICTAI), 2024</p></div>
+          <a class="pub-action" href="https://doi.org/10.1109/ICTAI62512.2024.00143" target="_blank" rel="noopener noreferrer" aria-label="Open DOI for Rapid Autonomy Transfer paper">DOI ↗</a>
         </article>
-
-        <article class="project reveal delay-1">
-          <div class="project-meta">
-            <div class="pnum">02</div>
-            <div class="pwhen">JAN 2023 — NOV 2025</div>
-            <div class="pfunder">DOE · BIRD Phase 1</div>
-          </div>
-          <div>
-            <h3>SubprocessBFT++ — Cyber-Attack Resilience for <em>Robotic Control Systems</em></h3>
-            <div class="role">Lead Researcher</div>
-            <p>
-              A subprocess-level fault-tolerance architecture for industrial control systems that guarantees recovery
-              within a handful of scan cycles after a control-hijacking attempt. Validated in drone simulations and
-              generalizable to single-controller robotic platforms.
-            </p>
-            <ul class="bullets">
-              <li><strong>Generalization.</strong> Originally designed for drones, the mechanism extends to single-controller robotic platforms across domains.</li>
-              <li><strong>Operational reach.</strong> Directly addresses DHS/CISA priorities for OT environments — applicable to U.S. power grids, manufacturing facilities, and autonomous-vehicle infrastructure.</li>
-              <li><strong>Status.</strong> Manuscript under review at ICRA 2027.</li>
-            </ul>
-            <div class="metric">
-              <!-- <span class="icon">⚡</span> -->
-              <span>Guaranteed recovery within <strong>2–3 scan cycles</strong> following a control-hijacking attempt.</span>
-            </div>
-          </div>
+        <article class="publication">
+          <div class="pub-year"><time datetime="2024">2024</time></div>
+          <div class="pub-main"><h3>Experimentation and Implementation of the BFT++ Cyber-Attack Resilience Mechanism for Cyber-Physical Systems</h3><p class="pub-authors">D. R. Keppler, <strong>M. F. Karim</strong>, M. S. Mickelson, J. S. Mertoguno</p><p class="pub-venue">ACM Transactions on Cyber-Physical Systems, 8(3), Article 35, 2024</p></div>
+          <a class="pub-action" href="https://doi.org/10.1145/3639570" target="_blank" rel="noopener noreferrer" aria-label="Open DOI for BFT++ paper">DOI ↗</a>
         </article>
-
+        <article class="publication">
+          <div class="pub-year"><time datetime="2023">2023</time></div>
+          <div class="pub-main"><h3>SoK: A Tale of Reduction, Security, and Correctness — Evaluating Program Debloating Paradigms and Their Compositions</h3><p class="pub-authors">M. Ali, M. Muzammil, <strong>M. F. Karim</strong>, A. Naeem, R. Haroon, M. Haris, H. Nadeem, W. Sabir, F. Shaon, F. Zaffar, V. Yegneswaran, A. Gehani, S. Rahaman</p><p class="pub-venue">European Symposium on Research in Computer Security (ESORICS), pp. 229–249, 2023</p></div>
+          <a class="pub-action" href="https://doi.org/10.1007/978-3-031-51482-1_12" target="_blank" rel="noopener noreferrer" aria-label="Open DOI for the program debloating SoK paper">DOI ↗</a>
+        </article>
+        <div class="pub-group-title secondary" id="under-review"><span>Manuscripts under review</span><span class="muted">Not yet accepted</span></div>
+        <article class="publication">
+          <div class="pub-year">ICRA 2027</div>
+          <div class="pub-main"><h3>SubprocessBFT++: Providing the Security Guarantees of BFT++ on a Single-Controller</h3><p class="pub-authors"><strong>M. F. Karim</strong>, J. S. Mertoguno</p><p class="pub-venue">Manuscript under review at IEEE International Conference on Robotics and Automation (ICRA 2027)</p></div>
+          <div class="pub-status">Under review</div>
+        </article>
+        <article class="publication">
+          <div class="pub-year">2026</div>
+          <div class="pub-main"><h3>Beware EviLLM: Enabling Vulnerability Injection via Large Language Models</h3><p class="pub-authors">E. Ryu*, S. Chung*, <strong>M. F. Karim</strong>, A. Raymaker, K. S. Jodha, Y. Chaturvedi, J. S. Mertoguno <span class="muted">(*equal contribution)</span></p><p class="pub-venue">Manuscript under review at IEEE International Conference on Tools with Artificial Intelligence (ICTAI), 2026</p></div>
+          <div class="pub-status">Under review</div>
+        </article>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- ========== PUBLICATIONS ========== -->
-  <section id="publications">
-    <div class="container">
-      <div class="section-head reveal">
-        <div>
-          <div class="eyebrow"><span class="num">03</span>Publications</div>
-          <h2>Selected work, <em>peer-reviewed &amp; in-flight.</em></h2>
-        </div>
-        <p class="lede">Recent peer-reviewed publications and current submissions. See Google Scholar for the full list.</p>
-      </div>
-
-      <div class="pub-tabs reveal">
-        <button class="active" data-tab="peer">Peer-Reviewed</button>
-        <button data-tab="review">Under Review</button>
-      </div>
-
-      <div class="pub-pane active reveal" id="pane-peer">
-        <div class="pub-list">
-
-          <div class="pub">
-            <div class="pyear">
-              2024
-              <span class="venue">ICTAI</span>
-            </div>
-            <div class="pbody">
-              <h4>Rapid Autonomy Transfer in Reinforcement Learning with a Single Pre-Trained Critic</h4>
-              <div class="pauthors">
-                <span class="me">M. F. Karim</span>, Y. Deng, L. Niu, B. Ramasubramanian, M. Alexiou, D. Sahabandu, R. Poovendran, J. S. Mertoguno
-              </div>
-              <div class="pvenue">IEEE International Conference on Tools with Artificial Intelligence (ICTAI), 2024.</div>
-            </div>
-            <div class="pactions">
-              <a class="plink" href="https://doi.org/10.1109/ICTAI62512.2024.00143" target="_blank">DOI ↗</a>
-            </div>
+    <section class="section" id="teaching" aria-labelledby="teaching-title">
+      <div class="container">
+        <div class="section-top"><div><span class="eyebrow">04 / Beyond research</span><h2 class="section-title" id="teaching-title">Teaching &amp; service</h2></div><p class="section-intro">Teaching, mentoring, and service have been an important part of my time in research.</p></div>
+        <div class="split-grid">
+          <div><h3 class="split-heading">Teaching &amp; mentorship</h3>
+            <ul class="plain-list">
+              <li><strong>TinyML Security — curriculum co-developer</strong><p>Developing lab-focused teaching materials on security and attacks involving machine-learning models deployed on embedded devices, in collaboration between Georgia Tech and the University of Washington (2024–present).</p></li>
+              <li><strong>Introduction to Cyber-Physical Systems Security — guest lecturer &amp; TA</strong><p>Georgia Tech. Guest lectures in 2023 and teaching-assistant work during Fall 2023.</p></li>
+              <li><strong>Network Security — teaching assistant</strong><p>Lahore University of Management Sciences, Fall 2022.</p></li>
+              <li><strong>GradAppLab — graduate mentor</strong><p>Supporting prospective graduate applicants through Lahore Women in Computing (2023–present).</p></li>
+            </ul>
           </div>
-
-          <div class="pub">
-            <div class="pyear">
-              2024
-              <span class="venue">ACM TCPS</span>
-            </div>
-            <div class="pbody">
-              <h4>Experimentation and Implementation of the BFT++ Cyber-Attack Resilience Mechanism for Cyber-Physical Systems</h4>
-              <div class="pauthors">
-                D. R. Keppler, <span class="me">M. F. Karim</span>, M. S. Mickelson, J. S. Mertoguno
-              </div>
-              <div class="pvenue">ACM Transactions on Cyber-Physical Systems, vol. 8, no. 3, art. 35, 2024.</div>
-            </div>
-            <div class="pactions">
-              <a class="plink" href="https://doi.org/10.1145/3639570" target="_blank">DOI ↗</a>
-            </div>
-          </div>
-
-          <div class="pub">
-            <div class="pyear">
-              2023
-              <span class="venue">ESORICS</span>
-            </div>
-            <div class="pbody">
-              <h4>SoK: A Tale of Reduction, Security, and Correctness — Evaluating Program Debloating Paradigms and Their Compositions</h4>
-              <div class="pauthors">
-                M. Ali, M. Muzammil, <span class="me">M. F. Karim</span>, A. Naeem, R. Haroon, M. Haris, H. Nadeem, W. Sabir, F. Shaon, F. Zaffar, V. Yegneswaran, A. Gehani, S. Rahaman
-              </div>
-              <div class="pvenue">European Symposium on Research in Computer Security (ESORICS), pp. 229–249, 2023.</div>
-            </div>
-            <div class="pactions">
-              <a class="plink" href="https://doi.org/10.1007/978-3-031-51482-1_12" target="_blank">DOI ↗</a>
-            </div>
-          </div>
-
-        </div>
-      </div>
-
-      <div class="pub-pane" id="pane-review">
-        <div class="pub-list">
-
-          <div class="pub">
-            <div class="pyear">
-              2026
-              <span class="venue">ICRA · sub.</span>
-            </div>
-            <div class="pbody">
-              <h4>SubprocessBFT++: Subprocess-Level Cyber-Attack Resilience for Single-Controller Robotic Systems</h4>
-              <div class="pauthors">
-                <span class="me">M. F. Karim</span>, J. S. Mertoguno
-              </div>
-              <div class="pvenue">IEEE International Conference on Robotics and Automation (ICRA), 2027 — under review.</div>
-            </div>
-            <div class="pactions">
-              <a class="plink" href="#" >Preprint —</a>
-            </div>
-          </div>
-
-          <div class="pub">
-            <div class="pyear">
-              2026
-              <span class="venue">ICTAI · sub.</span>
-            </div>
-            <div class="pbody">
-              <h4>Beware EviLLM: Enabling Vulnerability Injection via Large Language Models</h4>
-              <div class="pauthors">
-                E. Ryu*, S. Chung*, <span class="me">M. F. Karim</span>, A. Raymaker, K. S. Jodha, Y. Chaturvedi, J. S. Mertoguno &nbsp;<em>(*equal contribution)</em>
-              </div>
-              <div class="pvenue">IEEE International Conference on Tools with Artificial Intelligence (ICTAI), 2026 — under review.</div>
-            </div>
-            <div class="pactions">
-              <a class="plink" href="#" >Preprint —</a>
-            </div>
-          </div>
-
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ========== EXPERIENCE ========== -->
-  <section id="experience">
-    <div class="container">
-      <div class="section-head reveal">
-        <div>
-          <div class="eyebrow"><span class="num">04</span>Research Experience</div>
-          <h2>A short timeline.</h2>
-        </div>
-        <p class="lede">Where I've worked, what I built, and what came out of it.</p>
-      </div>
-
-      <div class="timeline reveal">
-
-        <div class="tl-item">
-          <div class="tl-when">JAN 2023 — PRESENT · ATLANTA, GA</div>
-          <h4>Graduate Research Assistant</h4>
-          <div class="tl-where">CSAFA Lab · Georgia Institute of Technology</div>
-          <ul>
-            <li><strong>Autonomous Systems Security.</strong> Developed a pre-trained critic–actor architecture for secure autonomy transfer in defense and industrial robotics — <span class="hl">25% faster convergence</span> than baselines while preserving operational security guarantees from parent models.</li>
-            <li><strong>LLM Security (EviLLM).</strong> Led an investigation of prompt-injection vulnerabilities in commercial LLM web interfaces and built a Chrome-based analysis framework that detects adversarial prompt patterns — addressing national-security concerns about manipulation of public-facing AI systems.</li>
-            <li><strong>JBODSP.</strong> Lead architect of the Phase 2 DSP-cluster AI accelerator (see Research §02).</li>
-          </ul>
-        </div>
-
-        <div class="tl-item">
-          <div class="tl-when">JAN 2021 — DEC 2022 · LAHORE, PK</div>
-          <h4>Undergraduate Research Assistant</h4>
-          <div class="tl-where">Internet Security and Privacy Lab · LUMS</div>
-          <ul>
-            <li><strong>Software Supply-Chain Security.</strong> Built a BERT-based optimization for LLVM program analysis and an automated debloating pipeline achieving a <span class="hl">50% reduction</span> in exploitable code — directly addressing CISA-flagged supply-chain vulnerabilities. Co-authored an ESORICS 2023 SoK on the topic.</li>
-          </ul>
-        </div>
-
-      </div>
-    </div>
-  </section>
-
-  <!-- ========== TEACHING & SERVICE ========== -->
-  <section id="service">
-    <div class="container">
-      <div class="section-head reveal">
-        <div>
-          <div class="eyebrow"><span class="num">05</span>Teaching, Service &amp; Leadership</div>
-          <h2>Beyond the lab.</h2>
-        </div>
-        <p class="lede">Curriculum, peer review, and community work that sits alongside the research.</p>
-      </div>
-
-      <div class="two-col">
-
-        <div class="col-card reveal">
-          <h3>Teaching &amp; Mentorship</h3>
-          <ul>
-            <li>
-              <strong>Curriculum Co-Developer · TinyML Security</strong>
-              Designing a first-of-its-kind, lab-focused university curriculum on attacking and defending machine-learning models on embedded hardware — Georgia Tech / University of Washington collaboration (2024–present).
-            </li>
-            <li>
-              <strong>Guest Lecturer &amp; Teaching Assistant</strong>
-              Introduction to Cyber-Physical Systems Security, Georgia Tech. Specialized lectures on securing critical infrastructure.
-            </li>
-            <li>
-              <strong>Graduate Mentor · Lahore Women in Computing — GradAppLab</strong>
-              Mentor prospective graduate students from Pakistan through admissions to top programs (2023–present).
-            </li>
-          </ul>
-        </div>
-
-        <div class="col-card reveal delay-1">
-          <h3>Service &amp; Leadership</h3>
-          <ul>
-            <li>
-              <strong>Technical Program Committee / Reviewer</strong>
-              IEEE ICTAI 2026 · ACNS 2026 (Cycle 2) · External Reviewer at AINA (2024–present) · Conference Volunteer at IEEE ICTAI, Washington D.C., 2024.
-            </li>
-            <li>
-              <strong>Member · Georgia Tech AI Safety Initiative</strong>
-              Contributing to discussions of AI safety in autonomous systems and LLM deployment for critical infrastructure (Sep 2024–present).
-            </li>
-            <li>
-              <strong>Member · JZT Pakistan</strong>
-              Lead awareness campaigns and coordinate blood-donor programs for the management and prevention of genetic blood disorders (2016–present).
-            </li>
-          </ul>
-        </div>
-
-      </div>
-    </div>
-  </section>
-
-  <!-- ========== EDUCATION & HONORS ========== -->
-  <section id="education">
-    <div class="container">
-      <div class="section-head reveal">
-        <div>
-          <div class="eyebrow"><span class="num">06</span>Education &amp; Honors</div>
-          <h2>Where I trained.</h2>
-        </div>
-        <p class="lede">Degrees, advisors, and recognitions along the way.</p>
-      </div>
-
-      <div class="edu-grid reveal">
-        <div class="edu-card">
-          <div class="deg">PH.D.</div>
-          <h4>Cybersecurity</h4>
-          <div class="where">Georgia Institute of Technology</div>
-          <div class="meta">
-            <div>EXPECTED 2028</div>
-            <div>CANDIDACY · NOV 2025</div>
-            <div>ADVISOR · J. S. MERTOGUNO</div>
-          </div>
-        </div>
-        <div class="edu-card">
-          <div class="deg">M.S.</div>
-          <h4>Computing Systems</h4>
-          <div class="where">Georgia Institute of Technology</div>
-          <div class="meta">
-            <div>EXPECTED MAY 2026</div>
-            <div>SPECIALIZATION · COMPUTING SYSTEMS</div>
-          </div>
-        </div>
-        <div class="edu-card">
-          <div class="deg">B.S.</div>
-          <h4>Computer Science</h4>
-          <div class="where">Lahore University of Management Sciences</div>
-          <div class="meta">
-            <div>AUG 2018 — AUG 2022</div>
-            <div>GPA · 3.8 / 4.0</div>
-            <div>HIGH DISTINCTION</div>
+          <div><h3 class="split-heading">Academic &amp; community service</h3>
+            <ul class="plain-list">
+              <li><strong>Program committee &amp; peer review</strong><p>IEEE ICTAI program committee / reviewer (2026); ACNS reviewer (2026); AINA external reviewer (2024).</p></li>
+              <li><strong>Invited research talks</strong><p>Presentations on SubprocessBFT++ at BIRD Energy Consortium workshops hosted by Georgia Tech (2024) and Arizona State University (2023).</p></li>
+              <li><strong>Georgia Tech AI Safety Initiative</strong><p>Participant in discussions on AI safety and security in autonomous and other computing systems (2024–present).</p></li>
+              <li><strong>JZT Pakistan</strong><p>Community work involving awareness efforts and blood-donor coordination for genetic blood disorders (2016–present).</p></li>
+            </ul>
           </div>
         </div>
       </div>
+    </section>
 
-      <div class="honors reveal delay-1">
-        <h4>Honors &amp; Awards</h4>
-        <ul>
-          <li><strong>Award of High Distinction</strong>LUMS, 2022</li>
-          <li><strong>Merit Scholarship</strong>LUMS, 2018–2022</li>
-          <li><strong>Dean's Honor List</strong>All semesters, LUMS, 2018–2022</li>
-        </ul>
+    <section class="section" id="education" aria-labelledby="education-title">
+      <div class="container">
+        <div class="section-top"><div><span class="eyebrow">05 / Background</span><h2 class="section-title" id="education-title">Education &amp; recognition</h2></div><p class="section-intro">My academic background and a few selected honors.</p></div>
+        <div class="split-grid">
+          <div><h3 class="split-heading">Education</h3>
+            <div class="education-row"><div><h3>PhD in Cybersecurity</h3><p>Georgia Institute of Technology</p><p class="edu-meta">Advanced to candidacy, November 2025 · Advisor: Prof. J. Sukarno Mertoguno</p></div><time>Expected 2028</time></div>
+            <div class="education-row"><div><h3>MS in Computer Science — Computing Systems</h3><p>Georgia Institute of Technology</p></div><time>May 2026</time></div>
+            <div class="education-row"><div><h3>BS in Computer Science</h3><p>Lahore University of Management Sciences</p></div><time>2022</time></div>
+          </div>
+          <div><h3 class="split-heading">Selected honors</h3>
+            <ul class="honor-list"><li><div><strong>Foley Scholar PhD Research Impact Award</strong><br><span>Finalist · Georgia Tech</span></div><span>2026</span></li><li><div><strong>Service &amp; Engagement Award</strong><br><span>School of Cybersecurity and Privacy, Georgia Tech</span></div><span>2024</span></li><li><div><strong>Award of High Distinction</strong><br><span>Lahore University of Management Sciences</span></div><span>2022</span></li></ul>
+          </div>
+        </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- ========== CONTACT ========== -->
-  <section id="contact">
-    <div class="container contact">
-      <div class="reveal">
-        <h2>Let's <em>build something</em> resilient.</h2>
-        <p>I'm always interested in collaborations on cyber-physical systems security, AI/ML hardware acceleration, and robotic autonomy. Reach out — I'll reply.</p>
-        <a class="contact-cta" href="mailto:faraz.karim1999@gmail.com">
-          faraz.karim1999@gmail.com
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
-        </a>
-      </div>
-    </div>
-  </section>
-
-  <!-- ========== FOOTER ========== -->
-  <footer class="container">
-    <div>© 2026 Muhammad Faraz Karim · Built with care in Atlanta</div>
-    <div class="ft-right">
-      <a href="https://github.com/faraz-karim" target="_blank">github</a>
-      <a href="https://linkedin.com/in/farazkarim" target="_blank">linkedin</a>
-      <a href="mailto:faraz.karim1999@gmail.com">email</a>
-      <a href="#top">↑ top</a>
-    </div>
-  </footer>
-
+    <section class="contact" id="contact" aria-labelledby="contact-title">
+      <div class="container"><span class="eyebrow">06 / Contact</span><h2 id="contact-title">Get in touch</h2><p>I'm happy to connect about research in systems security, resilient computing, and efficient hardware and software architectures.</p><a class="contact-email" href="mailto:faraz.karim1999@gmail.com">faraz.karim1999@gmail.com <span aria-hidden="true">↗</span></a><div class="contact-social"><a href="https://scholar.google.com/citations?hl=en&amp;user=a94Ar4MAAAAJ" target="_blank" rel="noopener noreferrer">Google Scholar ↗</a><a href="https://www.linkedin.com/in/farazkarim/" target="_blank" rel="noopener noreferrer">LinkedIn ↗</a><a href="https://github.com/faraz-karim" target="_blank" rel="noopener noreferrer">GitHub ↗</a><a href="assets/docs/Muhammad_Faraz_Karim_CV.pdf" target="_blank" rel="noopener">Curriculum Vitae ↗</a></div></div>
+    </section>
+  </main>
+  <footer class="site-footer"><div class="container footer-inner"><span>© <span id="year">2026</span> Muhammad Faraz Karim</span><a href="#top">Back to top ↑</a></div></footer>
   <script>
-    // Sticky nav border on scroll
-    const nav = document.getElementById('nav');
-    const onScroll = () => {
-      if (window.scrollY > 8) nav.classList.add('scrolled');
-      else nav.classList.remove('scrolled');
-    };
-    window.addEventListener('scroll', onScroll, { passive: true });
-    onScroll();
-
-    // Mobile menu toggle
-    const menuBtn = document.getElementById('menuBtn');
-    const navLinks = document.getElementById('navLinks');
-    menuBtn.addEventListener('click', () => navLinks.classList.toggle('open'));
-    navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => navLinks.classList.remove('open')));
-
-    // Reveal-on-scroll
-    const io = new IntersectionObserver((entries) => {
-      entries.forEach(e => {
-        if (e.isIntersecting) {
-          e.target.classList.add('in');
-          io.unobserve(e.target);
-        }
-      });
-    }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
-    document.querySelectorAll('.reveal').forEach(el => io.observe(el));
-
-    // Publication tabs
-    const tabs = document.querySelectorAll('.pub-tabs button');
-    const panes = document.querySelectorAll('.pub-pane');
-    tabs.forEach(btn => {
-      btn.addEventListener('click', () => {
-        tabs.forEach(b => b.classList.remove('active'));
-        panes.forEach(p => p.classList.remove('active'));
-        btn.classList.add('active');
-        document.getElementById('pane-' + btn.dataset.tab).classList.add('in');
-        document.getElementById('pane-' + btn.dataset.tab).classList.add('active');
-      });
-    });
+    (() => {
+      const toggle = document.getElementById('navToggle');
+      const menu = document.getElementById('mobileNav');
+      if (toggle && menu) {
+        menu.inert = true;
+        const close = () => {
+          toggle.setAttribute('aria-expanded', 'false');
+          toggle.setAttribute('aria-label', 'Open navigation');
+          menu.classList.remove('is-open');
+          menu.inert = true;
+          document.body.classList.remove('nav-open');
+        };
+        toggle.addEventListener('click', () => {
+          const opening = toggle.getAttribute('aria-expanded') !== 'true';
+          if (opening) {
+            toggle.setAttribute('aria-expanded', 'true');
+            toggle.setAttribute('aria-label', 'Close navigation');
+            menu.inert = false;
+            menu.classList.add('is-open');
+            document.body.classList.add('nav-open');
+          } else close();
+        });
+        menu.querySelectorAll('a').forEach(link => link.addEventListener('click', close));
+        document.addEventListener('keydown', event => { if (event.key === 'Escape' && toggle.getAttribute('aria-expanded') === 'true') { close(); toggle.focus(); } });
+        window.addEventListener('resize', () => { if (window.innerWidth > 750) close(); });
+        document.addEventListener('click', event => { if (!menu.contains(event.target) && !toggle.contains(event.target)) close(); });
+      }
+      document.getElementById('year').textContent = String(new Date().getFullYear());
+    })();
   </script>
 </body>
 </html>
