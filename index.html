@@ -116,9 +116,24 @@
     /* -------------------------------- Research ----------------------------- */
     .research-overview { display: grid; grid-template-columns: 1fr 1fr; gap: 34px; }
     .feature { min-width: 0; border: 1px solid var(--rule); background: var(--white); overflow: hidden; display: flex; flex-direction: column; }
-    .feature-figure { min-height: 260px; background: #ecf2f1; border-bottom: 1px solid var(--rule); display: flex; align-items: center; justify-content: center; padding: 26px; }
-    .feature-figure.diagram { background: #fff; }
-    .feature-figure img { width: 100%; height: auto; object-fit: contain; }
+    .feature-figure {
+      height: 340px;
+      min-height: 0;
+      background: #ecf2f1;
+      border-bottom: 1px solid var(--rule);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 26px;
+    }    
+        .feature-figure.diagram { background: #fff; }
+      .feature-figure img {
+        display: block;
+        width: 100%;
+        height: auto;
+        max-height: 235px;
+        object-fit: contain;
+      }
     .figure-note { color: var(--muted); font-size: .75rem; margin: 12px 0 0; text-align: left; line-height: 1.45; }
     .figure-wrapper { width: 100%; }
     .feature-body { flex: 1; padding: 32px 31px 33px; }
@@ -222,7 +237,7 @@
       .about-aside .subline { display: none; }
       .about-aside p { max-width: 360px; }
       .research-overview, .split-grid { grid-template-columns: 1fr; gap: 22px; }
-      .feature-figure { min-height: 265px; }
+      .feature-figure { height: 300px; }
       .research-subtitle { margin-top: 42px; }
       .research-row { grid-template-columns: 1fr; gap: 8px; }
       .publication { grid-template-columns: 1fr; gap: 8px; }
@@ -237,7 +252,7 @@
       .hero-actions { gap: 10px; }
       .pill-link { font-size: .83rem; padding: 10px 13px; }
       .feature-body { padding: 23px 19px; }
-      .feature-figure { min-height: 215px; padding: 15px; }
+      .feature-figure { height: 270px; padding: 15px; }
       .workflow-track { gap: 5px; grid-template-columns: 1fr 12px 1fr; }
       .workflow-step { font-size: .73rem; padding: 9px; min-height: 56px; }
       .education-row { grid-template-columns: 1fr; gap: 5px; }
